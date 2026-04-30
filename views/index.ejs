@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Management</title>
+</head>
+<body>
+
+<h1>Student List</h1>
+
+<!-- Form to add new student -->
+<form action="/add" method="POST">
+  <!-- input fields map to schema fields -->
+  <input type="text" name="name" placeholder="Name" required />
+  <input type="text" name="rollNumber" placeholder="Roll No" required />
+  <input type="text" name="branch" placeholder="Branch" />
+  <input type="number" name="marks" placeholder="Marks" />
+
+  <button type="submit">Add Student</button>
+</form>
+
+<hr>
+
+<ul>
+  <!-- Loop through students array -->
+  <% students.forEach(student => { %>
+    <li>
+      <!-- display student data -->
+      <%= student.name %> |
+      <%= student.rollNumber %> |
+      <%= student.branch %> |
+      <%= student.marks %>
+
+      <!-- Delete form -->
+      <form action="/delete/<%= student._id %>" method="POST" style="display:inline;">
+        <button type="submit">Delete</button>
+      </form>
+    </li>
+  <% }) %>
+</ul>
+
+</body>
+</html>
